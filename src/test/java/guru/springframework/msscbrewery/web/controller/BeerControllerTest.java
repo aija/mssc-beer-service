@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,6 +51,9 @@ class BeerControllerTest {
     void saveNewBeer() throws Exception {
         BeerDto beerDtoIn = BeerDto.builder()
                 .beerName("testBeerName")
+                .upc(9874659283476529L)
+                .beerStyle(BeerStyleEnum.PALE_ALE)
+                .price(new BigDecimal(12.12))
                 .build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDtoIn);
 
@@ -69,6 +73,9 @@ class BeerControllerTest {
     void updateBeerById() throws Exception {
         BeerDto beerDto = BeerDto.builder()
                 .beerName("Random")
+                .upc(9874659283476529L)
+                .beerStyle(BeerStyleEnum.PALE_ALE)
+                .price(new BigDecimal(12.12))
                 .build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
