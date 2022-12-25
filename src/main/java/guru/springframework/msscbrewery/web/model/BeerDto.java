@@ -2,6 +2,7 @@ package guru.springframework.msscbrewery.web.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +29,7 @@ public class BeerDto {
     private UUID id;
     @Null
     private Integer version;
-    @JsonFormat(pattern = "yyyy-MM-dd", shape= JsonFormat.Shape.STRING)
+    //@JsonFormat(pattern = "yyyy-MM-dd'T'hh:mm:ssZ", shape= JsonFormat.Shape.STRING)
     @Null
     private OffsetDateTime createdDate;
     @Null
@@ -48,5 +49,6 @@ public class BeerDto {
     private Integer quantityOnHand;
 
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate myLocalDate;
 }
