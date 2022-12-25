@@ -25,10 +25,10 @@ public class BeerController
 
     @PostMapping // POST - create new beer
     public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
-        BeerDto saveDto = beerService.saveNewBeer(beerDto);
+        BeerDto savedDto = beerService.saveNewBeer(beerDto);
         HttpHeaders headers = new HttpHeaders();
         //todo add hostname to URL
-        headers.add("Location", "/api/v1/beer/" + saveDto.getId().toString());
+        headers.add("Location", "/api/v1/beer/" + savedDto.getId().toString());
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
