@@ -69,7 +69,7 @@ class BeerControllerTest {
                             parameterWithName("iscold").description("Is Beer Cold Query param")
                         ),
                         responseFields(
-                            fieldWithPath("id").description("Id of Beer"),
+                            fieldWithPath("beerId").description("Id of Beer"),
                             fieldWithPath("version").description("Version Number"),
                             fieldWithPath("createdDate").description("Date Created"),
                             fieldWithPath("lastModifiedDate").description("Last Modified Date"),
@@ -77,7 +77,8 @@ class BeerControllerTest {
                             fieldWithPath("beerStyle").description("Beer Style"),
                             fieldWithPath("upc").description("UPC of Beer"),
                             fieldWithPath("price").description("Price"),
-                            fieldWithPath("quantityOnHand").description("Quantity on Hand")
+                            fieldWithPath("quantityOnHand").description("Quantity on Hand"),
+                            fieldWithPath("myLocalDate").description("Local Date")
                         )
                 ));
     }
@@ -107,7 +108,7 @@ class BeerControllerTest {
                 .andExpect(status().isCreated())
                 .andDo(document("v1/beer-new",
                     requestFields(
-                        fields.withPath("id").ignored(),
+                        fields.withPath("beerId").ignored(),
                         fields.withPath("version").ignored(),
                         fields.withPath("createdDate").ignored(),
                         fields.withPath("lastModifiedDate").ignored(),
@@ -115,7 +116,8 @@ class BeerControllerTest {
                         fields.withPath("beerStyle").description("Style of the Beer"),
                         fields.withPath("upc").description("Beer UPC").attributes(),
                         fields.withPath("price").description("Beer Price"),
-                        fields.withPath("quantityOnHand").ignored()
+                        fields.withPath("quantityOnHand").ignored(),
+                        fields.withPath("myLocalDate").description("Local Date")
                     )
                 ));
     }
