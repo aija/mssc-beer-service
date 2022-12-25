@@ -1,5 +1,6 @@
 package guru.springframework.msscbrewery.web.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class BeerDto {
+
+    @JsonProperty("BeerId")
     @Null
     private UUID id;
     @Null
