@@ -88,7 +88,9 @@ class BeerControllerTest {
         BeerDto beerDtoIn = getValidBeerDto();
         String beerDtoJson = objectMapper.writeValueAsString(beerDtoIn);
 
-        given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
+        beerDtoIn.setId(UUID.randomUUID());
+
+        given(beerService.saveNewBeer(any())).willReturn(beerDtoIn);
 
         ConstrainedFields fields = new ConstrainedFields(BeerDto.class);
 
